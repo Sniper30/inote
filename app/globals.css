@@ -5,6 +5,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,11 +14,17 @@
     --foreground: #ededed;
   }
 }
-
+html{
+  height: 100%;
+}
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  height: 100%;
+  font-size: 0.8em;
 }
 
 @layer utilities {
