@@ -13,13 +13,15 @@ export default function BlockComponent({data}:{data: any}){
     const [text,setText] = useState(()=> data?.text || '');
     const dispatch = useDispatch<AppDispatch>();
     const {toogleNote} = useSelector(interactionSelector);
+    useEffect(()=>{
 
+    },[text])
     if(!data) return;
     toogleNote && useDebounce(200,text,async (value: string)=>{
         if(!toogleNote) return;
-        if(!data?.text && text === '') return;
+        if(!data?.text && text === '' || data?.text === text) return;
         // dispatch(saveAction({text,noteId:data?.id}))
-        dispatch(saveWriteThunk({noteId: String(data?.id),text: text}))
+        dispatch(saveWriteThunk({noteId: String(data?.id),text: text}));
     });
     return (    
         
