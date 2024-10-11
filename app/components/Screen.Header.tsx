@@ -6,22 +6,25 @@ import { IoGridOutline } from "react-icons/io5";
 import { IoIosArrowBack } from "react-icons/io";
 
 import React from "react";
+import { useSelector } from "react-redux";
+import { interactionSelector } from "../fetures/interactivity.slice";
+import CloseCurrentNote from "./close_current_note";
 
-export default function ScreenMenu({ toogle, setToogle, children }: { toogle: boolean, setToogle: () => {}, children: React.ReactNode }) {
+export default function ScreenMenu({ children }: {children: React.ReactNode }) {
 
-
+    // const setToogle = ()
     return (
         <Header className="border-[1.4px] border-t-0 border-zinc-800 w-full">
             <Nav className="gap-52">
 
-                <ShiftBottoms toogle={toogle} setToogle={setToogle} />
+                <ShiftBottoms/>
                 {children}
             </Nav>
         </Header>
     );
 }
 
-const ShiftBottoms = ({ toogle, setToogle }: { toogle: boolean, setToogle: () => {} }) => {
+const ShiftBottoms = () => {
 
     return (
         <div className="flex items-center">
@@ -34,7 +37,8 @@ const ShiftBottoms = ({ toogle, setToogle }: { toogle: boolean, setToogle: () =>
                     <IoGridOutline className="text-lg" />
                 </div>
             </div>
-            <IoIosArrowBack className="text-lg" onClick={() => toogle ? setToogle() : null} />
+          
+            <CloseCurrentNote />
         </div>
     )
 }

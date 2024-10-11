@@ -6,20 +6,11 @@ import MenuHeader from "./MenuTopDashboardComponent";
 
 import Modal from "./modal";
 import CreateNewSubFolderComponent from "./CreateNewSubFolder";
-import styles from '@/app/app.module.css'
 
 const array = [
     {
         title: 'icloud',
-    },
-    {
-
-        title: 'Notes',
-    },
-    {
-
-        title: 'Musica',
-    },
+    }
 ]
 
 export default function DashboardComponent() {

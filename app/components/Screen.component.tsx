@@ -1,45 +1,49 @@
 'use client'
 
 import { Suspense, useEffect, useState } from "react";
-
-import ScreenMenu from "./Screen.menu";
+import {useDispatch, useSelector} from 'react-redux'
+import ScreenHeader from "./Screen.Header";
 
 import ShowAllNotes from "./show_all_notes";
 import GarbageAndNewNoteBottons from "./Garbage_Create_note";
 import { createClient } from "../utils/supabase/clientSupabase";
 import { note } from "../utils/types";
+import { interactionSelector, toogleAction } from "../fetures/interactivity.slice";
+import { NoteSelector } from "../fetures/write.and.save.note.slice";
 
 
 export default function ScreenComponent({ data }: { data: note[] }) {
-    const [toogle, setToogle] = useState(false);
     const [notes, setNotes] = useState(data);
-    const [showOneNote, setShowOneNote] = useState<boolean | number>(0);
-    const supabase = createClient();
-    const close = () => setToogle(!toogle) as any;
+    const notesSelector = useSelector(NoteSelector);
+    console.log(notesSelector)
 
-    const open = (key: number | boolean) => {
+        // if(notesSelector.length > 0) setNotes(notesSelector);
 
-        setShowOneNote(key);
-        setToogle(!toogle)
+    // const open = (key: number | boolean) => {
 
-    }
+    //     // setShowOneNote(key);
+    //     // setToogle(!toogle)
+    //     dispatch(toogleAction({toogle: !toogle, whichNoteYouWillOpen: key}))
+    // }
 
-    useEffect(() => {
-        if (!toogle) setShowOneNote(false);
-    }, [toogle])
+    // useEffect(() => {
+    //     if (!toogle) setShowOneNote(false);
+    // }, [toogle])
 
-    supabase.channel('notes')
-        .on('postgres_changes', { event: '*', schema: 'notes', table: 'notes' }, async (paylod) => {
-            const reload = await supabase.schema('notes').from('notes').select('*').order('id', { ascending: false }) as {data: note[]};
-            setNotes(() => [...reload.data]);
-        }).subscribe();
+    // supabase.channel('notes')
+    //     .on('postgres_changes', { event: '*', schema: 'notes', table: 'notes' }, async (paylod) => {
+    //         const reload = await supabase.schema('notes').from('notes').select('*').order('id', { ascending: false }) as {data: note[]};
+    //         setNotes(() => [...reload.data]);
+    //     }).subscribe();
 
     return (
         <div className=" bg-zinc-800 w-full  h-full  flex flex-col justify-between ">
-            <ScreenMenu setToogle={close} toogle={toogle}>
-                <GarbageAndNewNoteBottons open={open} />
-            </ScreenMenu>
-            <ShowAllNotes open={open} showOneNote={showOneNote} data={notes} toogle={toogle} />
+            <ScreenHeader>
+                <GarbageAndNewNoteBottons open={()=>{}} />
+            </ScreenHeader>
+            <ShowAllNotes data={notes} />
         </div>
     )
+
+
 }

@@ -3,7 +3,6 @@ import { NextRequest, NextResponse } from "next/server"
 import { updateSession } from "./app/utils/supabase/middleware";
 
 export default function middleware(request: NextRequest){
-    console.log(request.url)
     if(request.url.match(/error/)) return;
     return updateSession(request);
 }

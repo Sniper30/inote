@@ -3,10 +3,13 @@ import { IoIosArrowBack } from "react-icons/io";
 import {createNote} from "../utils/create_note"
 import { IoIosAdd, IoIosMenu } from "react-icons/io";
 import { Dispatch, SetStateAction, useActionState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { toogleAction } from "../fetures/interactivity.slice";
  const GarbageAndNewNoteBottons = ({open}:{open:(b:boolean | number)=>void}) => {
    const [error,action,isPending] = useActionState(createNote,null);
+   const dispatch = useDispatch();
    useEffect(()=>{
-       if(error?.status === 201) return open(0);
+       if(error?.status === 201) dispatch(toogleAction({whichNoteYouWillOpen: 0}))
     },[isPending]);
 
     return (
