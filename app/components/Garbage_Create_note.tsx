@@ -3,14 +3,19 @@ import { IoIosArrowBack } from "react-icons/io";
 import {createNote} from "../utils/create_note"
 import { IoIosAdd, IoIosMenu } from "react-icons/io";
 import { Dispatch, SetStateAction, useActionState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { toogleAction } from "../fetures/interactivity.slice";
- const GarbageAndNewNoteBottons = ({open}:{open:(b:boolean | number)=>void}) => {
+import { useDispatch, useSelector } from "react-redux";
+import { interactionSelector, toogleAction } from "../fetures/interactivity.slice";
+ const GarbageAndNewNoteBottons = () => {
    const [error,action,isPending] = useActionState(createNote,null);
+   const {toogleNote, whichNoteYouWillOpen} = useSelector(interactionSelector);
    const dispatch = useDispatch();
-   useEffect(()=>{
-       if(error?.status === 201) dispatch(toogleAction({whichNoteYouWillOpen: 0}))
-    },[isPending]);
+
+    useEffect(()=>{
+        if(isPending) dispatch(toogleAction({toogleNote: false, whichNoteYouWillOpen:null}))
+        if(error?.data?.length && !isPending){
+        dispatch(toogleAction({toogleNote: true, whichNoteYouWillOpen: error.data[0].id}))
+        }
+    },[error,isPending])
 
     return (
         <div className="flex items-center">

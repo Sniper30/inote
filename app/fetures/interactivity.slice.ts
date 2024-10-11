@@ -4,7 +4,7 @@ import { RootState } from '../store';
 
 const initialStateInteraction = {
     toogleNote: false,
-    whichNoteYouWillOpen: 0
+    whichNoteYouWillOpen: 0 || null
 }
 
 const interactionSlice = createSlice({
@@ -12,8 +12,9 @@ const interactionSlice = createSlice({
     initialState: initialStateInteraction,
     reducers:{
         toogleAction(state,action){
-            state.toogleNote = !state.toogleNote;
-            if(action.payload.whichNoteYouWillOpen) state.whichNoteYouWillOpen = action.payload.whichNoteYouWillOpen
+            console.log(action.payload)
+            state.toogleNote = action.payload.toogleNote
+            state.whichNoteYouWillOpen = action.payload.whichNoteYouWillOpen
         }
     }
 });

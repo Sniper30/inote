@@ -10,6 +10,6 @@ export default function CloseCurrentNote() {
     const dispatch = useDispatch();
     return (
 
-        <IoIosArrowBack className="text-lg" onClick={()=>toogleInteraction.toogleNote && dispatch(toogleAction({}))} />
+        <IoIosArrowBack className="text-lg" onClick={()=>toogleInteraction.toogleNote && dispatch(toogleAction({whichNoteYouWillOpen : null, toogleNote: false}))} />
     )
 }
