@@ -6,4 +6,5 @@ export interface note {
     author: number;
     updated_at: number;
     titulo: string;
+    created_at: string
 }

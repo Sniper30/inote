@@ -18,14 +18,14 @@ import { interactionSelector, toogleAction } from "../fetures/interactivity.slic
     },[error,isPending])
 
     return (
-        <div className="flex items-center">
+        <div className="flex items-center justify-center">
 
-            <div className="flex justify-center items-center ml-5 text-gray-200 divide-x-[1px] w-20 h-8">
-                <div className="w-9 flex justify-center ">
+            <div className="flex flex-1 justify-center items-center text-gray-200 divide-x-[1px]">
+                <div className="w-9 flex justify-center flex-1 ">
                     < IoIosMenu className="text-lg" />
                 </div>
-                <div className="w-9 flex justify-center">
-                    <form>
+                <div className="w-9 flex justify-center items-center flex-1 ">
+                    <form className="flex-1 flex justify-center ">
                         <button formAction={action}><IoIosAdd  className="text-lg"/></button>
                         {isPending && <p>loading...</p>}
                     </form>

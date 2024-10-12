@@ -10,7 +10,7 @@ export default function ShowAllNotes(){
     const toogleRedux = useSelector(interactionSelector);
     const notesSelector = useSelector(NoteSelector);
     return(
-        <div className={`${styles?.divsHeader} flex flex-wrap justify-start items-start relative`}>
+        <div className={`flex flex-wrap relative gap-4 p-4 content-start flex-1 h-full `}>
             {
                 (toogleRedux.toogleNote && toogleRedux.whichNoteYouWillOpen) ? 
                 <BlockComponent data={notesSelector.notes.find(d => d.id === toogleRedux.whichNoteYouWillOpen)}/> :
