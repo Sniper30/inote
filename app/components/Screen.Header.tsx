@@ -9,8 +9,9 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { interactionSelector, toogleView, viewSelector } from "../fetures/interactivity.slice";
 import CloseCurrentNote from "./close_current_note";
+import GarbageAndNewNoteBottons from "./Garbage_Create_note";
 
-export default function ScreenMenu({ children }: {children: React.ReactNode }) {
+export default function ScreenMenu({ children }: {children?: React.ReactNode }) {
 
     // const setToogle = ()
     return (
@@ -18,7 +19,7 @@ export default function ScreenMenu({ children }: {children: React.ReactNode }) {
             <Nav className="gap-52">
 
                 <ShiftBottoms/>
-                {children}
+                <GarbageAndNewNoteBottons />
             </Nav>
         </Header>
     );

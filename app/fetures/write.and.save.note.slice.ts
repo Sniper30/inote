@@ -13,7 +13,7 @@ const whiteAndSaveSlice = createSlice({
     initialState: {notes:[], typing:''} as initialState,
     reducers:{
         addNotes:(state,action)=>{
-            state.notes = action.payload
+            state.notes = action.payload.map((r: {noteid: note}) => r.noteid );
         },
     },
     extraReducers(builder){

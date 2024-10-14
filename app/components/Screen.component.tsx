@@ -19,9 +19,8 @@ export default function ScreenComponent({ data }: { data: note[] }) {
     }, [data])
     return (
         <div className={` bg-zinc-800 w-full  h-full  flex flex-col overflow-hidden`}>
-            <ScreenHeader>
-                <GarbageAndNewNoteBottons />
-            </ScreenHeader>
+            <ScreenHeader />
+        
             <div className="flex h-full">
             { view === 'scroll' ? <ScrollComponent/> : <ShowAllNotes />}
             </div>

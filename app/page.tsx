@@ -8,8 +8,15 @@ import { note } from "./utils/types";
 
 
 
-export default async function Home() {
-  const { data } = await getAllNotes() as any as { data: note[] };
+export default async function Home({
+  searchParams
+}:{
+  searchParams :{
+    query?:string,
+  }
+}) {
+  const {data} = await getAllNotes(searchParams.query || 'all') as any as { data: note[] };
+
   return (
 
     <main className="flex w-full h-full bg-blue-500 relative">
