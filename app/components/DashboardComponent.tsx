@@ -1,13 +1,13 @@
-
 import MenuHeader from "./MenuTopDashboardComponent";
 
-import { fetchVersionToCacheGetParentsFolders } from "../utils/getParentFolders";
 import { parentFolder } from "../utils/types";
 import ItemsMenuComponent from "./Items.menu.component";
+import { fetchVersionToCacheGetParentsFolders } from "../utils/fetch/getparentFolders";
+import getParentsFolders from "../utils/getParentFolders";
+
 
 export default async function DashboardComponent() {
-    const folders =  await fetchVersionToCacheGetParentsFolders();
-    console.log("mmg",folders)
+  const folders = await getParentsFolders();
     return (    
         <div className="min-w-64 h-full bg-zinc-700 border-r-[1.4px] border-zinc-800">
             <MenuHeader />

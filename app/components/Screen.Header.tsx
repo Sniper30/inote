@@ -3,11 +3,10 @@ import Header from "./Header.component";
 import Nav from "./Nav.component";
 import { IoIosMenu } from "react-icons/io";
 import { IoGridOutline } from "react-icons/io5";
-import { IoIosArrowBack } from "react-icons/io";
 
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { interactionSelector, toogleView, viewSelector } from "../fetures/interactivity.slice";
+import { toogleView, viewSelector } from "../fetures/interactivity.slice";
 import CloseCurrentNote from "./close_current_note";
 import GarbageAndNewNoteBottons from "./Garbage_Create_note";
 

@@ -9,7 +9,6 @@ type Item = {
 }
 export default function ItemMenuComponent({items}:{items?: Array<Item>}) {
 
-    console.log(items)
     return items?.map(item => 
     // <li className="my-2 hover:bg-zinc-500 rounded-md py-1 cursor-pointer mb-3 " key={item.id} >
         <Link
