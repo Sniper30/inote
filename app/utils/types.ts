@@ -26,3 +26,11 @@ export interface parentFolder {
     id: string;
     name:string;
 }
+export type Item = {
+    id: string,
+    name: string,
+    query: string
+}
+export type BoundingClientRect = {
+    getBoundingClientRect: ()=>({x:0,y:0})
+}

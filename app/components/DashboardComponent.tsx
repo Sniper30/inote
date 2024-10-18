@@ -2,7 +2,6 @@ import MenuHeader from "./MenuTopDashboardComponent";
 
 import { parentFolder } from "../utils/types";
 import ItemsMenuComponent from "./Items.menu.component";
-import { fetchVersionToCacheGetParentsFolders } from "../utils/fetch/getparentFolders";
 import getParentsFolders from "../utils/getParentFolders";
 
 

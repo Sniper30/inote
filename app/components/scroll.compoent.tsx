@@ -12,15 +12,14 @@ export default function ScrollComponent() {
     const Block = useCallback(() => _note && <BlockComponent data={_note} />, [_note])
     useEffect(() => {
         SetNote(() => notes.notes.find(n => n.id === toogleNote.whichNoteYouWillOpen))
-    }, [toogleNote.whichNoteYouWillOpen, toogleNote.toogleNote, _note])
+    }, [toogleNote.whichNoteYouWillOpen, toogleNote.toogleNote, _note,notes.notes])
     return (
         <div className=" w-full flex overflow-hidden">
-            <div className="border-r-[1px] border-zinc-500 w-48 h-full flex flex-col gap-4 p-4 overflow-hidden overflow-y-scroll">
+            <div className="border-r-[1px] border-zinc-500 w-48 h-full flex flex-col gap-4 pt-4 overflow-hidden overflow-y-scroll" style={{scrollbarWidth:'none'}}>
                 {notes.notes.map(note => <Note key={note.created_at + note.id} note={note} />)}
             </div>
             <div className=" w-full h-full relative">
                 {<Block />}
-                {/* {_note && <BlockComponent data={_note} />} */}
             </div>
         </div>
     )
@@ -29,15 +28,14 @@ export default function ScrollComponent() {
 
 const Note = ({ note }: { note: note }) => {
     let date = new Date(note.created_at);
-    const toogleNote = useSelector(interactionSelector);
+    const interactions = useSelector(interactionSelector);
     let stringDate = date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear();
     let dispatch = useDispatch();
     const toogle = (id: number) => {
         dispatch(toogleAction({ whichNoteYouWillOpen: id, toogleNote: true }))
-        //  dispatch(toogleAction({whichNoteYouWillOpen: null,oogleNote: false }));
     }
     return (
-        <div onClick={() => toogle(note.id)} className="w-72 border-b-[1px] border-zinc-700">
+        <div onClick={() => toogle(note.id)} className={`w-full h-14 cursor-pointer rounded-md flex flex-col items-center justify-center border-b-[1px] border-zinc-700 ${interactions.whichNoteYouWillOpen === note.id ? 'bg-yellow-600' : 'bg-transparent'}`}>
             <div className="w-full inline-block overflow-hidden text-ellipsis whitespace-nowrap font-black">{note.titulo || note.text}</div>
             <div className="flex gap-1 items-center justify-start"> <span className=" ">{stringDate}</span>  <span className="w-full inline-block  overflow-hidden text-ellipsis whitespace-nowrap">{note.text}</span> </div>
             <div className="flex gap-1 items-center justify-start"><IoFolderOutline />notes</div>

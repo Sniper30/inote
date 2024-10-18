@@ -2,6 +2,8 @@ import {createAsyncThunk, createSlice, current} from '@reduxjs/toolkit';
 import store, { RootState } from '../store';
 import { createClient } from '../utils/supabase/clientSupabase';
 import { note } from '../utils/types';
+import { revalidatePath } from 'next/cache';
+import { useSearchParams } from 'next/navigation';
 
 type initialState = {
     notes: note[],
@@ -22,7 +24,7 @@ const whiteAndSaveSlice = createSlice({
             let first_part = [...state.notes].splice(0,index);
             let second_part = [...state.notes].slice( index + 1,[...state.notes].length);
             state.notes = [...first_part,action.payload![0],...second_part];
-        })
+        });
     }
 });
 

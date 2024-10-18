@@ -2,6 +2,15 @@ import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 
 
+export const createFetch =
+  (options: Pick<RequestInit, "next" | "cache">) =>
+  (url: RequestInfo | URL, init?: RequestInit) => {
+    return fetch(url, {
+      ...init,
+      ...options,
+    });
+  };
+
 export function createClient() {
   const cookieStore = cookies();
 
@@ -9,6 +18,14 @@ export function createClient() {
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
+      // global:{
+      //   fetch: createFetch({
+      //     next:{
+      //       tags:['supabase'],
+      //       revalidate:3600
+      //     }
+      //   })
+      // },
       cookies: {
         getAll() {
           return cookieStore.getAll()
