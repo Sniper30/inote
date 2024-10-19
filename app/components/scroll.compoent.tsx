@@ -12,7 +12,7 @@ export default function ScrollComponent() {
     const Block = useCallback(() => _note && <BlockComponent data={_note} />, [_note])
     useEffect(() => {
         SetNote(() => notes.notes.find(n => n.id === toogleNote.whichNoteYouWillOpen))
-    }, [toogleNote.whichNoteYouWillOpen, toogleNote.toogleNote, _note,notes.notes])
+    }, [toogleNote.whichNoteYouWillOpen])
     return (
         <div className=" w-full flex overflow-hidden">
             <div className="border-r-[1px] border-zinc-500 w-48 h-full flex flex-col gap-4 pt-4 overflow-hidden overflow-y-scroll" style={{scrollbarWidth:'none'}}>

@@ -9,7 +9,7 @@ export default function BlockComponent({ data }: { data: any }) {
     const {text, setText} = useSaveHook(data);
     const dispatch = useDispatch<AppDispatch>();
     const { toogleNote,whichNoteYouWillOpen } = useSelector(interactionSelector);
-    const typing = (t: string) => toogleNote && setText(t);
+    const typing = (t: string) => toogleNote && setText(t)
 
     const PreventContextMenu = (event: React.MouseEvent, which: number)=>{
         event.preventDefault();
