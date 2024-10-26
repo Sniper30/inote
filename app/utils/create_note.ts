@@ -5,38 +5,15 @@ import { createClient } from "./supabase/serverSupabase";
 
 
 
-export async function createNote(query?: string) {
-
+export async function createNote(query: string) {
+    let supabase = createClient();
     try {
-        const { user } = (await createClient().auth.getUser()).data;
-        const note = await createClient().schema('notes').from('notes').insert({ author: user?.id }).select();
-        console.log(note);
-        const linkTofolder = await searchSubFolder(note.data![0].id,query);
+        const { user } = (await supabase.auth.getUser()).data;
+        const note = await supabase.schema('notes').from('notes').insert({ author: user?.id }).select();
+        await supabase.rpc('link_sub_folder_to_a_note',{"_query":query,"note":note.data![0].id});
         revalidatePath('/');
         return note;
     } catch (error) {
         throw error;
     }
 }
-
-
-const searchSubFolder = async (noteid:string,query?: string) =>{
-    let supabase = createClient();
-    if(query) {
-        let {data} = await supabase.schema('notes').from('sub_folders').select('id').eq('query',query);
-        return await linkNoteSubFolder(noteid,data![0].id);
-    }
-    return await linkNoteSubFolder(noteid,'b8f1ed2d-9f6f-4ec3-8612-68a63a53d75a');
-}
-
-export async function linkNoteSubFolder(noteid: number | string,query: string){
-    try {
-        const sql = createClient();
-        return await sql.schema('notes').from('note_subfolder').insert({noteid: noteid,sub_foldersid:query})
-        
-    } catch (error) {
-        throw error
-    }
-
-
-}  

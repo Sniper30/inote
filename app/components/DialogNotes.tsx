@@ -24,7 +24,7 @@ export default function DialogNotes(){
         }
         window.addEventListener('mousedown',handler)
         return ()=> window.removeEventListener('mousedown',handler);
-    },[interactions.deleteView.x,]);
+    },[interactions.deleteView.x,dispatch]);
  
     return (
         <div ref={dialog} style={{top: (interactions.deleteView.y - 50) + 'px',left: (interactions.deleteView.x - getbounding.x)+'px'}} className={`absolute w-[250px] h-[50px] ${interactions.whichYouWillDelete ? 'flex' : 'hidden'}`}>

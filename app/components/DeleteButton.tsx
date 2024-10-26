@@ -12,7 +12,7 @@ export default function DeleteButton(){
     const dispatch = useDispatch();
     useEffect(()=>{
         if(!isPending) dispatch(toogleAction({whichNoteYouWillOpen: null, toogleNote: false}))
-    },[isPending])
+    },[isPending,dispatch])
     if(!interactions.whichNoteYouWillOpen || interactions.whichNoteYouWillOpen === null) return <AiOutlineDelete className="text-zinc-500"/>;
     return (
         <form>

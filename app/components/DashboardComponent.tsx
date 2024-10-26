@@ -3,6 +3,7 @@ import MenuHeader from "./MenuTopDashboardComponent";
 import { parentFolder } from "../utils/types";
 import ItemsMenuComponent from "./Items.menu.component";
 import getParentsFolders from "../utils/getParentFolders";
+import { createClient } from "../utils/supabase/serverSupabase";
 
 
 export default async function DashboardComponent() {
@@ -10,6 +11,9 @@ export default async function DashboardComponent() {
     return (    
         <div className="min-w-64 h-full bg-zinc-700 border-r-[1.4px] border-zinc-800">
             <MenuHeader />
+            <div className="block">
+    
+            </div>
             <div className={`p-1 px-3 overflow-y-scroll `}>
                 {folders?.map((menu:parentFolder)=> <ItemsMenuComponent key={menu.name} name={menu.name} id={menu.id} />)}
             </div>

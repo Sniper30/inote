@@ -1,7 +1,6 @@
 
 import getSubsFolders from "../utils/getSubsFolders";
 import counNotes from "../utils/supabase/countNotes";
-import ItemMenuComponent from "./item.menu.component";
 import { LinkSubfolder } from "./LinksubFolder";
 
 
@@ -13,7 +12,7 @@ export default async function ItemsMenuComponent({name,id}:{name: string,id: str
         <ul className={` w-full  h-fit  max-h-[160px] overflow-hidden transition-all transform ease-in-out delay-150 flex flex-col`}>
             {subfolders?.data ?.map(async item =>{
                 const count = (await counNotes(item.id)).count
-               return <LinkSubfolder item={item} count={count || 0}/>
+               return <LinkSubfolder key={item.id} item={item} count={count || 0}/>
             })}
         </ul>
         </>

@@ -5,7 +5,7 @@ import {getAllNotes} from "./utils/get_all_notes";
 import Dashboard from "./components/DashboardComponent";
 import ScreenComponent from "./components/Screen.component";
 import { note } from "./utils/types";
-import { Suspense } from "react";
+
 
 
 
@@ -17,13 +17,14 @@ export default async function Home({
   }
 }) {
   const {data} = await getAllNotes(searchParams.query || 'all') as any as { data: note[] };
+  console.log("data page: ", data)
   return (
     <main className="flex w-full h-full bg-blue-500 relative">
       <Dashboard />
-      <Suspense fallback={<>loading</>}>
+
       <ScreenComponent data={data} />
 
-      </Suspense>
+
     </main>
 
   );

@@ -11,7 +11,7 @@ export const LinkSubfolder = ({ item, count }: { item: Item,count:number }) => {
     return <li key={item.id} className={`p-1 ${query === item.query ? 'bg-amber-800' : ''} rounded-md mb-1`}><Link
         className="grid grid-cols-[10px,auto,auto] gap-2 items-center "
         key={item.id}
-        href={`/?query=${item.query}`}
+        href={`/${item.name}`}
     >
         <IoIosFolder />
         {item.name}
