@@ -11,7 +11,7 @@ export default function DeleteNote({noteId}:{noteId:string}){
     const interactions = useSelector(interactionSelector);
     useEffect(()=>{
             if(!isPending) dispatch(toogleDelete({whichYouWillDelete: null, deleteView:{x:-1,y:-1}}))
-    },[error,isPending])
+    },[error,isPending,dispatch])
 
     return noteId && (
         <div className="bg-zinc-700 border-[1px] pl-2 border-zinc-600 w-full h-full rounded-md flex flex-col justify-center">

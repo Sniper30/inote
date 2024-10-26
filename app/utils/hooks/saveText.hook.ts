@@ -10,7 +10,7 @@ export const useSaveHook = (data:{id:'',text:''}) =>{
             if(text !== data?.text) dispatch(saveWriteThunk({ noteId: data?.id, text }))
         }, 200);
     return () => clearTimeout(time)
-}, [text])
+}, [text,data.id,data.text,dispatch])
 
 return {text,setText}
 }
