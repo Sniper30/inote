@@ -1,7 +1,5 @@
 'use server'
-import { revalidatePath } from "next/cache";
 import { createClient } from "../utils/supabase/serverSupabase";
-import { redirect } from "next/navigation";
 import { stateRegisterType } from "./form";
 import { validateInputs } from "./validateInputs";
 
