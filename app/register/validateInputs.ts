@@ -11,6 +11,7 @@ export const validateInputs = (inputs: [string,string][])=>{
             msg = 'Make shure you fill every input.';
             return {check,msg};
         }
+        
         if(array[0].match(/lastname|name/) && array[1].length < 3){
             check = false;
             msg = 'Looks like you name o lastname are too short.';
