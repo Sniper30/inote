@@ -17,7 +17,6 @@ export default async function Home({
   }
 }) {
   const {data} = await getAllNotes(searchParams.query || 'all') as any as { data: note[] };
-  console.log("data page: ", data)
   return (
     <main className="flex w-full h-full bg-blue-500 relative">
       <Dashboard />

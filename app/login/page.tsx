@@ -1,6 +1,3 @@
-import { redirect } from "next/navigation";
-import { createClient } from "../utils/supabase/serverSupabase"
-import { revalidatePath } from "next/cache";
 import Form from "./form";
 import Link from "next/link";
 import { inter } from "../fonts";
@@ -14,8 +11,9 @@ export default async function LoginPage(){
             <h1 className="font-light text-2xl">Sign in to your account</h1>
             <Form />
             <Link 
+            className="font-light"
                 href={'/register'}
-            >i dont have an account</Link>
+            >You don't have an account?</Link>
 
             </div>
         </div>

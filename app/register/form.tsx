@@ -10,7 +10,7 @@ export type stateRegisterType = {error:string | null};
 export default function Form(){
     const [state,action, isPending] = useActionState(register,{error: null} as stateRegisterType );
     useEffect(()=>{
-        if(!state.error) redirect('/login');
+        if(!state.error && isPending) redirect('/login');
     },[isPending])
    
     return (
