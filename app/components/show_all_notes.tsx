@@ -10,7 +10,7 @@ export default function ShowAllNotes(){
     const interactions = useSelector(interactionSelector);
     const notesSelector = useSelector(NoteSelector);
     return(
-        <div className={`flex flex-wrap relative gap-4 p-4 content-start flex-1 h-full `}>
+        <div className={`flex flex-wrap relative gap-4 p-1 pt-4 md:p-4 justify-center md:justify-normal content-start flex-1 h-full `}>
             <DialogNotes/>
             {
                 (interactions.toogleNote && interactions.whichNoteYouWillOpen) ? 

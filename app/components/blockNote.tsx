@@ -22,7 +22,7 @@ export default function BlockComponent({ data }: { data: any }) {
     }
     return (
          <>
-         <textarea onClick={handleClick} onContextMenu={(e)=>PreventContextMenu(e,data.id)} value={text} onChange={(e) => typing(e.target.value)} className={` ${toogleNote ? "w-full text-white h-full absolute top-0 left-0 flex-1 border-none" : "max-w-[180px] h-[150px] cursor-pointer "} p-2 bg-zinc-900 border-[1px] ${whichNoteYouWillOpen === data.id ? 'border-yellow-600' : 'border-zinc-600'}  rounded-md flex-1 basis-[180px] resize-none outline-none`} />
+         <textarea onFocus={(e)=> e.preventDefault()} onClick={handleClick} onContextMenu={(e)=>PreventContextMenu(e,data.id)} value={text} onChange={(e) => typing(e.target.value)} className={` ${toogleNote ? "w-full text-white h-full absolute top-0 left-0 flex-1 border-none" : "md:max-w-[180px] h-[150px] cursor-pointer "} p-2 bg-zinc-900 border-[1px] ${whichNoteYouWillOpen === data.id ? 'border-yellow-600' : 'border-zinc-600'}  rounded-md flex-1 basis-[180px] resize-none outline-none w-full`} />
         </>
 
     )
